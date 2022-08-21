@@ -15,10 +15,13 @@ const Home: NextPage = () => {
   const fetchMovies: any = (page: Number) => {
     return axios
       .get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=12f5be9e44863cafc7c5762441a2017a&language=en-US&page=${page}`
+        `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_MOVIE_API_KEY}&language=en-US&page=${page}`
       )
       .then((res) => {
         setMovies(res.data.results);
+      })
+      .catch((e) => {
+        console.log(e);
       });
   };
 
