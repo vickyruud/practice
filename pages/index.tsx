@@ -28,16 +28,20 @@ const Home: NextPage = () => {
 
   const renderMovies = movies.map((movie: Movie, i) => {
     return (
-      <MovieCard key={i} title={movie.title} poster_path={movie.poster_path} />
+      <MovieCard
+        key={i}
+        title={movie.title}
+        poster_path={movie.poster_path}
+        overview={movie.overview}
+      />
     );
   });
 
   return (
     <>
       <NavBar />
-      <div className="m-5">
-        Welcome to the Movies
-        <div className="flex flex-row flex-wrap">
+      <div className="mx-5">
+        <div className="flex  flex-row flex-wrap">
           {movies ? renderMovies : null}
         </div>
       </div>

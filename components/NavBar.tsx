@@ -1,10 +1,19 @@
 import { useTheme } from "next-themes";
 import { SunIcon, MoonIcon } from "@heroicons/react/solid";
+import { useState, useEffect } from "react";
 
 const NavBar = () => {
   const { systemTheme, theme, setTheme } = useTheme();
 
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const renderThemeChanger = () => {
+    if (!mounted) return null;
+
     const currentTheme = theme === "system" ? systemTheme : theme;
 
     if (currentTheme === "dark") {
@@ -27,12 +36,10 @@ const NavBar = () => {
   };
 
   return (
-    <header className="h-15 shadow-sm dark:border-gray-700">
-      <div className="container  px-4 sm:px-6 py-4 flex justify-between items-center">     
-
-        {renderThemeChanger()}
-      </div>
-    </header>
+    <div className="flex flex-row justify-between p-5 shadow-md border-b-4 dark:border-b-gray-700">
+      <p> Welcome To The Movies</p>
+      {renderThemeChanger()}
+    </div>
   );
 };
 
