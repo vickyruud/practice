@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 import { Movie } from "../types";
+import MovieCard from "../components/MovieCard";
+import NavBar from "../components/NavBar";
 
 const Home: NextPage = () => {
   const [movies, setMovies] = useState([]);
@@ -17,7 +19,6 @@ const Home: NextPage = () => {
       )
       .then((res) => {
         setMovies(res.data.results);
-        console.log(res.data.results);
       });
   };
 
@@ -27,21 +28,20 @@ const Home: NextPage = () => {
 
   const renderMovies = movies.map((movie: Movie, i) => {
     return (
-      <div key={i}>
-        <p>{movie.title}</p>
-        <img
-          className="w-[500px]"
-          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-        />
-      </div>
+      <MovieCard key={i} title={movie.title} poster_path={movie.poster_path} />
     );
   });
 
   return (
-    <div className="m-5">
-      Hello
-      {movies && renderMovies}
-    </div>
+    <>
+      <NavBar />
+      <div className="m-5">
+        Welcome to the Movies
+        <div className="flex flex-row flex-wrap">
+          {movies ? renderMovies : null}
+        </div>
+      </div>
+    </>
   );
 };
 
