@@ -24,3 +24,7 @@ export enum OriginalLanguage {
   Ja = "ja",
   Tr = "tr",
 }
+
+export interface SelectedMovie {
+  [k: string]: any;
+}

@@ -36,8 +36,8 @@ const NavBar = () => {
   };
 
   return (
-    <div className="flex flex-row justify-between p-5 shadow-md border-b-4 dark:border-b-gray-700">
-      <p> Welcome To The Movies</p>
+    <div className="flex flex-row justify-between p-5 shadow-md border-b-4 dark:border-b-gray-700 dark:shadow-slate-800 ">
+      <p className="text-3xl font-bold"> Welcome To The Movies</p>
       {renderThemeChanger()}
     </div>
   );

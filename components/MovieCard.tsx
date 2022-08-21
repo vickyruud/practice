@@ -1,19 +1,23 @@
+import Image from "next/image";
 import React from "react";
 
 const MovieCard = ({
   title,
   poster_path,
   overview,
+  id,
 }: {
   title: string;
   poster_path: string;
   overview: string;
+  id: number;
 }) => {
   return (
     <div className="max-w-sm m-5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-      <a href="#">
-        <img
-          className="rounded-t-lg"
+      <a href={`/movie/${id}`}>
+        <Image
+          width={500}
+          height={700}
           src={`https://image.tmdb.org/t/p/original/${poster_path}`}
         />
       </a>

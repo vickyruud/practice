@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
 import { Movie } from "../types";
@@ -33,6 +33,7 @@ const Home: NextPage = () => {
         title={movie.title}
         poster_path={movie.poster_path}
         overview={movie.overview}
+        id={movie.id}
       />
     );
   });
