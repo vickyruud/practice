@@ -8,11 +8,12 @@ import { Movie } from "../types";
 
 const Home: NextPage = () => {
   const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
 
-  const fetchMovies: any = () => {
+  const fetchMovies: any = (page: Number) => {
     return axios
       .get(
-        "https://api.themoviedb.org/3/movie/popular?api_key=12f5be9e44863cafc7c5762441a2017a&language=en-US&page=10"
+        `https://api.themoviedb.org/3/movie/popular?api_key=12f5be9e44863cafc7c5762441a2017a&language=en-US&page=${page}`
       )
       .then((res) => {
         setMovies(res.data.results);
@@ -25,7 +26,15 @@ const Home: NextPage = () => {
   }, []);
 
   const renderMovies = movies.map((movie: Movie, i) => {
-    return <p key={i}>{movie.title}</p>;
+    return (
+      <div key={i}>
+        <p>{movie.title}</p>
+        <img
+          className="w-[500px]"
+          src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+        />
+      </div>
+    );
   });
 
   return (
