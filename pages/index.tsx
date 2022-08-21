@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 import axios from "axios";
+import { Movie } from "../types";
 
 const Home: NextPage = () => {
   const [movies, setMovies] = useState([]);
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
       )
       .then((res) => {
         setMovies(res.data.results);
+        console.log(res.data.results);
       });
   };
 
@@ -22,7 +24,7 @@ const Home: NextPage = () => {
     fetchMovies();
   }, []);
 
-  const renderMovies = movies.map((movie, i) => {
+  const renderMovies = movies.map((movie: Movie, i) => {
     return <p key={i}>{movie.title}</p>;
   });
 
