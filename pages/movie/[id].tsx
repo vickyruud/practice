@@ -7,7 +7,6 @@ import Image from "next/image";
 const Movie = () => {
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
   const [selectedMovie, setSelectedMovie] = useState<SelectedMovie>([]);
 
   const fetchMovieDetails = () => {
@@ -16,8 +15,8 @@ const Movie = () => {
         `https://api.themoviedb.org/3/movie/${id}?api_key=12f5be9e44863cafc7c5762441a2017a&language=en-US`
       )
       .then((res) => {
-        console.log(res.data);
         setSelectedMovie(res.data);
+        console.log(res.data);
       });
   };
 
@@ -26,7 +25,15 @@ const Movie = () => {
   }, [id]);
 
   return (
-    <div>{selectedMovie ? <p>Movie: {selectedMovie.title}</p> : null}</div>
+    <div>
+      <Image
+        width={500}
+        height={700}
+        src={`https://image.tmdb.org/t/p/original/${selectedMovie.poster_path}`}
+      />
+      <p>Movie: {selectedMovie.title}</p>
+      <p>{selectedMovie.tagline}</p>
+    </div>
   );
 };
 
