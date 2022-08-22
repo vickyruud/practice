@@ -70,7 +70,11 @@ const Movie = () => {
         <p>Movie: {selectedMovie.title}</p>
         <p>{selectedMovie.tagline}</p>
       </div>
-      {videoId ? <YouTube videoId={videoId} /> : null}
+      {videoId ? (
+        <YouTube videoId={videoId} />
+      ) : (
+        <p>Looks like there's no video for this movie!! </p>
+      )}
     </div>
   );
 };

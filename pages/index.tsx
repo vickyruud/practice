@@ -43,6 +43,9 @@ const Home: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>Movie Club</title>
+      </Head>
       <NavBar />
       <div className="mx-5">
         <div className="flex  flex-row flex-wrap">

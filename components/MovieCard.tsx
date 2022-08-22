@@ -22,7 +22,7 @@ const MovieCard = ({
         />
       </a>
       <div className="p-5 flex flex-col ">
-        <a href="#">
+        <a href={`/movie/${id}`}>
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {title}
           </h5>
