@@ -35,6 +35,8 @@ const Movie = () => {
     return results.find(searchTrailerHelper);
   };
 
+  //gets video list
+
   const getVideo = () => {
     axios
       .get(
